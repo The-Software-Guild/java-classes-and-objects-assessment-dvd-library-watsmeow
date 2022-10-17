@@ -19,4 +19,12 @@ public class UserIOConsoleImpl implements UserIO {
         }
         return userInput;
     }
+
+    @Override
+    public String readString(String msg) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(msg);
+        String userInput = scanner.nextLine();
+        return userInput;
+    }
 }

@@ -6,13 +6,15 @@ import java.util.List;
 
 public interface LibraryDao {
 
-    DVD addDVD(String title, DVD dvd);
+    DVD addDVD(String title, DVD dvd) throws LibraryDaoException;
 
-    DVD deleteDVD(String title);
+    DVD removeDVD(String title) throws LibraryDaoException;
 
-    DVD editDVD(String title, DVD dvd);
+    void editDVD(String title, DVD dvd) throws LibraryDaoException;
 
-    List<DVD> getAllDVDs();
+    DVD getDVD(String title) throws LibraryDaoException;
 
-    DVD getDVD(String title);
+    List<DVD> getAllDVDs() throws LibraryDaoException;
+
+
 }
