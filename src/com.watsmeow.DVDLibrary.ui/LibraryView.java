@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LibraryView {
 
-    // Instantiating the user interface
+    // Assigning the io to a private variable
     private UserIO io;
 
     // Library constructor establishing that this class will be using the user interface as it's interface
@@ -88,7 +88,7 @@ public class LibraryView {
         return io.readString("Enter the movie title");
     }
 
-    // Displays all information pertaining to a single dvd object if a dvd by that title exists in memory
+    // Displays all information pertaining to a single dvd object
     public void displayDVD(DVD dvd) {
         if (dvd != null) {
             io.print(dvd.getTitle());

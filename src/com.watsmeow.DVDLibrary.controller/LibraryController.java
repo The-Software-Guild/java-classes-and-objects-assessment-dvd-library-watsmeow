@@ -8,21 +8,19 @@ import java.util.List;
 
 public class LibraryController {
 
-    // Instantiating the LibraryView
+    // Assigning LibraryView to a private variable
     private LibraryView view;
 
-    // Instantiating the LibraryDao
+    // Assigning LibraryDao to a private variable
     private LibraryDao library;
 
-    /* Controller constructor that takes in the dao and view as parameters
-    * so that it is working with the appropriate classes
-    * */
+    // Controller constructor that takes in the dao and view as parameters
     public LibraryController(LibraryDao dao, LibraryView view) {
         this.library = dao;
         this.view = view;
     }
 
-    // Method to run the application
+    // Method to run the controller
     public void run() {
         boolean keepRunning = true;
         int userSelection = 0;

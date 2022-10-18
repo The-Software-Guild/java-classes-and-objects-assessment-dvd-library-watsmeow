@@ -37,10 +37,10 @@ public class LibraryDaoFileImpl implements LibraryDao {
     public void editDVD(String title, DVD dvd) throws LibraryDaoException {
         loadLibrary();
         if (title == dvd.getTitle()) {
-            DVD editedDVD = dvds.put(title, dvd);
+            dvds.put(title, dvd);
         } else {
             dvds.remove(title);
-            DVD editedDVD = dvds.put(dvd.getTitle(), dvd);
+            dvds.put(dvd.getTitle(), dvd);
         }
         writeRoster();
     }

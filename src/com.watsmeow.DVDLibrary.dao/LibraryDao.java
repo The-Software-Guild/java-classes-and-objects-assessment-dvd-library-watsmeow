@@ -15,14 +15,15 @@ public interface LibraryDao {
     DVD addDVD(String title, DVD dvd) throws LibraryDaoException;
 
     /**
-     * Removes a dvd to the library and associates it with the given title.
+     * Removes a dvd from the library using the given title.
      * @param title is the dvd info is associated with
      * @return returns the DVD object already associated the title if one exists, if not returns null
      */
     DVD removeDVD(String title) throws LibraryDaoException;
 
     /**
-     * Returns dvd of user provided title. Returns null if nothing by that title exists ERROR ERROR ERROR
+     * User inputs the title of the dvd they want to edit and then can proceed to edit its information
+     * if the dvd exists. If it does not exist the user is notified that no such dvd exists in the library.
      * @param title is the dvd info is associated with
      * @param dvd is the object being edited
      */
