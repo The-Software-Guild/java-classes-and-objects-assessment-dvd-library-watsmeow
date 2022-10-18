@@ -22,9 +22,10 @@ public class LibraryView {
         io.print("3. Edit an existing DVD in the Library");
         io.print("4. View a DVD");
         io.print("5. View Library");
-        io.print("6. Exit");
+        io.print("6. Search if a dvd exists");
+        io.print("7. Exit");
 
-        return io.readSelection("Select from the following choices:", 1, 6);
+        return io.readSelection("Select from the following choices:", 1, 7);
     }
 
     public DVD getNewDVDInfo() {
@@ -121,7 +122,8 @@ public class LibraryView {
             io.print("5: " + dvd.getStudio());
             io.print("6: " + dvd.getUserNotes());
             io.print("7: Exit");
-            int userSelection = io.readSelection("Select the number of the info field you want to edit:", 1, 7);
+            int userSelection = io.readSelection("Select the number of the info field you want to edit or " +
+                    "exit to return to main menu:", 1, 7);
             if (userSelection == 7) {
                 keepRunning = false;
                 break;
@@ -171,6 +173,18 @@ public class LibraryView {
     public void displayErrorMessage(String errorMsg) {
         io.print("ERROR");
         io.print(errorMsg);
+    }
+
+    public void searchLibrary(boolean exists) {
+        if (exists) {
+            io.print("This dvd exists in your library.");
+        } else {
+            io.print("No dvd by that title exists in your library.");
+        }
+    }
+
+    public void displayDoesNotExistBanner() {
+        io.print("No DVD by that title in your library.");
     }
 
 }

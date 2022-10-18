@@ -45,6 +45,9 @@ public class LibraryController {
                         listDVDs();
                         break;
                     case 6:
+                        searchDVDs();
+                        break;
+                    case 7:
                         keepRunning = false;
                         break;
                     default:
@@ -92,9 +95,20 @@ public class LibraryController {
         view.displayEditDVDBanner();
         String title = view.getDVDTitleFromUser();
         DVD dvd = library.getDVD(title);
-        DVD editedDVD = view.editDVD(dvd);
-        library.editDVD(title, editedDVD);
-        view.displayEditSuccessBanner();
+        if (dvd != null) {
+            DVD editedDVD = view.editDVD(dvd);
+            library.editDVD(title, editedDVD);
+            view.displayEditSuccessBanner();
+        } else {
+            view.displayDoesNotExistBanner();
+        }
+    }
+
+    private void searchDVDs() throws LibraryDaoException {
+        view.displayDVDBanner();
+        String title = view.getDVDTitleFromUser();
+        boolean DVDExists = library.searchLibrary(title);
+        view.searchLibrary(DVDExists);
     }
 
     private void exitMessage() {
