@@ -1,19 +1,19 @@
 package com.watsmeow.DVDLibrary.ui;
 
-
 import com.watsmeow.DVDLibrary.dto.DVD;
-
 import java.util.List;
 
 public class LibraryView {
 
+    // Instantiating the user interface
     private UserIO io;
 
-    //constructor
+    // Library constructor establishing that this class will be using the user interface as it's interface
     public LibraryView(UserIO io) {
         this.io = io;
     }
 
+    // Prints out the main menu to the user
     public int printOptionsGetUserSelection() {
 
         io.print("Main Menu");
@@ -28,6 +28,7 @@ public class LibraryView {
         return io.readSelection("Select from the following choices:", 1, 7);
     }
 
+    // Gets user information in order to create a new DVD object
     public DVD getNewDVDInfo() {
         String title = io.readString("Enter DVD title");
         String releaseDate = io.readString("Enter movie release date");
@@ -47,14 +48,17 @@ public class LibraryView {
         return currentDVD;
     }
 
+    // Uses print method from io to print out the prompt to add a dvd
     public void displayCreateDVDBanner() {
         io.print("ADD A DVD");
     }
 
+    // Uses readString method from io and prints out a display confirming success
     public void displayCreateSuccessBanner() {
         io.readString("ADDED DVD SUCCESSFULLY. PRESS ENTER TO CONTINUE.");
     }
 
+    // Formats dvd list info into a string and displays entire library to user
     public void displayDVDList(List<DVD> DVDList) {
         for (DVD currentDVD : DVDList) {
             String DVDInfo = String.format("%s : %s, %s, %s, %s, %s",
@@ -69,18 +73,22 @@ public class LibraryView {
         io.readString("Press enter to continue.");
     }
 
+    // Banner that is used when user wants to display the whole library
     public void displayDisplayListBanner() {
         io.print("DISPLAY ALL DVDS");
     }
 
+    // Banner used when user wants to find a specific dvd by its title
     public void displayDVDBanner() {
         io.print("FIND A DVD BY TITLE");
     }
 
+    // Uses readString method to take in the dvd title from the user
     public String getDVDTitleFromUser() {
         return io.readString("Enter the movie title");
     }
 
+    // Displays all information pertaining to a single dvd object if a dvd by that title exists in memory
     public void displayDVD(DVD dvd) {
         if (dvd != null) {
             io.print(dvd.getTitle());
@@ -95,10 +103,14 @@ public class LibraryView {
         io.readString("Press enter to continue");
     }
 
+    // Displays the banner for removing a dvd from the library
     public void displayRemoveDVDBanner() {
         io.print("REMOVE A DVD");
     }
 
+    /*Uses print and readString methods from io to confirm removal of a dvd, or to tell the user no dvd by that title
+    * exists in the library
+    */
     public void displayRemovedDVD(DVD DVDRecord) {
         if (DVDRecord != null) {
             io.print("DVD successfully removed from library.");
@@ -108,10 +120,12 @@ public class LibraryView {
         io.readString("Press enter to continue");
     }
 
+    // Displays the banner to edit a dvd
     public void displayEditDVDBanner() {
         io.print("EDIT DVD BY ENTERING TITLE");
     }
 
+    // Provides the user with a menu from which to edit specific fields of a dvd object and takes in their edits
     public DVD editDVD(DVD dvd) {
         boolean keepRunning = true;
         while (keepRunning) {
@@ -158,23 +172,29 @@ public class LibraryView {
         }
         return dvd;
     }
+
+    // Displays banner that edits were successful
     public void displayEditSuccessBanner() {
         io.print("EDIT SUCCESSFUL");
     }
 
+    // Displays exit banner
     public void displayExitBanner() {
         io.print("Good bye");
     }
 
+    // Displays error banner
     public void displayErrorBanner() {
         io.print("Unknown command");
     }
 
+    // Displays error message
     public void displayErrorMessage(String errorMsg) {
         io.print("ERROR");
         io.print(errorMsg);
     }
 
+    // Displays if a dvd title, and therefore a dvd, exists or not in the library
     public void searchLibrary(boolean exists) {
         if (exists) {
             io.print("This dvd exists in your library.");
@@ -183,8 +203,8 @@ public class LibraryView {
         }
     }
 
+    // Displays that the requested dvd does not exist
     public void displayDoesNotExistBanner() {
         io.print("No DVD by that title in your library.");
     }
-
 }

@@ -40,5 +40,9 @@ public interface LibraryDao {
      */
     List<DVD> getAllDVDs() throws LibraryDaoException;
 
+    /**
+     * Returns if a dvd exists in the library or not using the title
+     * @return boolean to indicate existence
+     */
     boolean searchLibrary(String title) throws LibraryDaoException;
 }

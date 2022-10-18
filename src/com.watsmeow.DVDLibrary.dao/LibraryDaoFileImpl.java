@@ -52,6 +52,9 @@ public class LibraryDaoFileImpl implements LibraryDao {
         return dvds.get(title);
     }
 
+    /*Method that allows user to enter a dvd title and search the library to see if it exists
+    * @return a boolean that says whether the dvd exists or not
+    */
     @Override
     public boolean searchLibrary(String title) throws LibraryDaoException {
         loadLibrary();
@@ -113,7 +116,7 @@ public class LibraryDaoFileImpl implements LibraryDao {
         scanner.close();
     }
 
-    // Marshall the dvd hashmap into the file
+    // Marshall the dvd hashmap into the file for storage and later retrieval
     private String marshallDVD(DVD dvd) {
         // Converts each dvd object into a string delimited by :: and returns the string
         String dvdAsText = dvd.getTitle() + DELIMITER;
@@ -125,7 +128,10 @@ public class LibraryDaoFileImpl implements LibraryDao {
         return dvdAsText;
     }
 
-    //
+    /*
+    * Writes all dvds in the library to the file based on the loadLibrary file format.
+    * @throws LibraryDaoException if an error occurs writing to the file
+    * */
     private void writeRoster() throws LibraryDaoException {
         PrintWriter out;
 
@@ -134,7 +140,7 @@ public class LibraryDaoFileImpl implements LibraryDao {
         } catch (IOException e) {
             throw new LibraryDaoException("Could not save data.", e);
         }
-
+        // Writes out the dvd objects to the library file
         String dvdAsText;
         List<DVD> dvdList = this.getAllDVDs();
         for (DVD currentDVD : dvdList) {
@@ -144,6 +150,4 @@ public class LibraryDaoFileImpl implements LibraryDao {
         }
         out.close();
     }
-
-
 }

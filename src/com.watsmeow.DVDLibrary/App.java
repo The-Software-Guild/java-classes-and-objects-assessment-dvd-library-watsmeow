@@ -9,6 +9,7 @@ import com.watsmeow.DVDLibrary.ui.UserIOConsoleImpl;
 
 public class App {
 
+    // Main entry point of the program, instantiates the classes and interfaces being used and activates the run method
     public static void main(String[] args) {
         UserIO io = new UserIOConsoleImpl();
         LibraryView view = new LibraryView(io);
