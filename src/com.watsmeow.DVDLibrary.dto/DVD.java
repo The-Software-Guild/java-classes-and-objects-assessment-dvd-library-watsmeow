@@ -1,5 +1,10 @@
 package com.watsmeow.DVDLibrary.dto;
 
+
+/*
+* This class is the data transfer object and determines exactly what a dvd object must look like
+* aka what properties it must have and what those properties consist of
+*/
 public class DVD {
     private String title;
     private String releaseDate;
