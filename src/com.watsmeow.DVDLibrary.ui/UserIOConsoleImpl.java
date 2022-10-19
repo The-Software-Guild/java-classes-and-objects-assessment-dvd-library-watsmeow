@@ -15,9 +15,13 @@ public class UserIOConsoleImpl implements UserIO {
         System.out.println(msg);
         int userInput = min - 1;
         while (userInput < min || userInput > max) {
-            userInput = scanner.nextInt();
-            if (userInput < min || userInput > max) {
-                System.out.println("Invalid input");
+            try {
+                userInput = scanner.nextInt();
+                if (userInput < min || userInput > max) {
+                    System.out.println("Invalid input");
+                }
+            } catch(Exception e) {
+                return -1;
             }
         }
         return userInput;
